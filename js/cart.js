@@ -54,6 +54,7 @@ window.addEventListener("click", (event) => {
                                 </div>`;
       cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
       card.querySelector("[data-counter]").innerText = "1";
+      toggleCartStatus();
     }
   }
 });
