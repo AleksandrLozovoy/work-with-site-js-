@@ -12,7 +12,19 @@ window.addEventListener("click", (event) => {
       price: card.querySelector(".price__currency").innerText,
       counter: card.querySelector("[data-counter]").innerText,
     };
-    const cartItemHtml = `          <div class="cart-item" data-id="${productInfo.id}">
+
+    //   Находим товар в корзине
+    const itemInCart = cartWrapper.querySelector(
+      `[data-id="${productInfo.id}"]`
+    );
+    // Склдываем товар если он в корзине уже есть
+    if (itemInCart) {
+      counterEl = itemInCart.querySelector("[data-counter]");
+      counterEl.innerText =
+        parseInt(counterEl.innerText) + parseInt(productInfo.counter);
+      card.querySelector("[data-counter]").innerText = "1";
+    } else {
+      const cartItemHtml = `          <div class="cart-item" data-id="${productInfo.id}">
                                     <div class="cart-item__top">
                                         <div class="cart-item__img">
                                             <img src="${productInfo.imgSrc}" alt="">
@@ -40,6 +52,8 @@ window.addEventListener("click", (event) => {
                                         </div>
                                     </div>
                                 </div>`;
-    cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
+      cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
+      card.querySelector("[data-counter]").innerText = "1";
+    }
   }
 });
