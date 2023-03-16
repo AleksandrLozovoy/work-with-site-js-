@@ -33,6 +33,15 @@ window.addEventListener("click", (event) => {
     ) {
       event.target.closest(".cart-item").remove();
       toggleCartStatus();
+      calcCartWrapper();
     }
+  }
+
+  // Проверка клика на + или - внутри корзины
+  if (
+    event.target.hasAttribute("data-action") &&
+    event.target.closest(".cart-wrapper")
+  ) {
+    calcCartWrapper();
   }
 });

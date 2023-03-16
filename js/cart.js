@@ -23,6 +23,7 @@ window.addEventListener("click", (event) => {
       counterEl.innerText =
         parseInt(counterEl.innerText) + parseInt(productInfo.counter);
       card.querySelector("[data-counter]").innerText = "1";
+      calcCartWrapper();
     } else {
       const cartItemHtml = `          <div class="cart-item" data-id="${productInfo.id}">
                                     <div class="cart-item__top">
@@ -55,6 +56,11 @@ window.addEventListener("click", (event) => {
       cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
       card.querySelector("[data-counter]").innerText = "1";
       toggleCartStatus();
+      calcCartWrapper();
     }
   }
 });
+
+// function saveToLocalStorage() {
+//   localStorage.setItem("index", JSON.stringify(questionIndex));
+// }
